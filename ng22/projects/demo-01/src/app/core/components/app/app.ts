@@ -1,9 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CourseItem } from '../../../features/courses/components/course-item/course-item';
+import { CourseItemSignals } from '../../../features/courses/components/course-item-signals/course-item-signals';
+
 
 @Component({
   selector: 'ind-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CourseItem, CourseItemSignals],
   template: `
     <header>
       <h1>{{ title() }}</h1>
@@ -11,6 +14,8 @@ import { RouterOutlet } from '@angular/router';
     <main class="container">
       <router-outlet />
       <p>Este es un proyecto de demostración de Angular 22</p>
+      <ind-course-item />
+      <ind-course-item-signals />
     </main>
     <footer>footer</footer>
   `,
@@ -34,9 +39,9 @@ import { RouterOutlet } from '@angular/router';
       padding: 1rem;
       position: relative;
     }
- 
+
   `,
 })
 export class App {
-  protected readonly title = signal('Curso de Angular 22');
+  protected readonly title = signal('Curso de Angular 22')
 }
