@@ -102,7 +102,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ### Día 1 (L-13): Introducción a Typescript y Angular
 
-<!-- - Introducción a Angular y su ecosistema.
+- Introducción a Angular y su ecosistema.
 
 - Entornos de desarrollo para Angular: 
   - Node: nvm (Node Version Manager)
@@ -111,31 +111,32 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 - Instalación de Angular CLI.
 - Workspace y proyectos en Angular.
   - Creación de un nuevo workspace Angular sin proyecto. `ng new`
-  - Creación de un nuevo proyecto (app) Angular. `ng generate app` -->
-
-[descanso]: 11:00 - 11:30
-
-<!-- - Workspace y proyectos en Angular (2).
-
+  - Creación de un nuevo proyecto (app) Angular. `ng generate app`
   - Añadiendo ESLint (`ng add`) y Prettier.
   - Estructura de un workspace/proyecto Angular.
+  - Creación de un workspace+proyecto desde Vitest. `npm create vitest@latest`
 
-- Angular CLI: Comandos básicos.
+- Angular CLI: Comandos básicos (1).
   - Servidor de desarrollo: `ng serve`.
+  - Construcción del proyecto: `ng build`.
+
+[descanso]: 11:30 - 12:00
+
+- Angular CLI: Comandos básicos (2).
   - Testing con Vitest: `ng test`.
   - Testing con Playwright: `ng e2e`.
     - Problemas de versiones. Actualización con Version Lens 
-  - Construcción del proyecto: `ng build`.
   - Despliegue: `ng deploy`. Opciones
+
 - Generación de componentes: `ng generate`.
   - Elementos de un componente: HTML, CSS, TypeScript. 
   - Template y estilos inline o en ficheros.
   - Guía de estilos actualizada
   - Scaffolding 
-  - Estilos globales: variables, reset... -->
+  - Estilos globales: variables, reset...
  
-
-<!-- - Elementos básicos de TypeScript.
+<!-- 
+- Elementos básicos de TypeScript.
   - Tipos de datos. Inferencia y anotación de tipos.
   - Tipado de funciones.
   - Tipos personalizados. Interfaces y tipos.
@@ -146,7 +147,8 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
     - Clases abstractas.
   - Módulos ES6 en TypeScript.
     - Import y Export.
-    - Módulos por defecto y nombrados. -->
+    - Módulos por defecto y nombrados. 
+-->
 
 ### Día 2 (M-14): Componentes del Layout. Testing. 
 
