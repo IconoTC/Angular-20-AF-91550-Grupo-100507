@@ -100,7 +100,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ## Desarrollo del curso
 
-### Día 1 (L-13): Introducción a Typescript y Angular
+### Día 1 (L-13): Introducción Angular. CLI. Componentes. Testing. 
 
 - Introducción a Angular y su ecosistema.
 
@@ -150,34 +150,41 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
     - Módulos por defecto y nombrados. 
 -->
 
-### Día 2 (M-14): Componentes del Layout. Testing. 
-
- <!-- - Generación de componentes: `ng generate component <nombre>`.
-    - Componente 🧿Sample
-      - Programación declarativa en el template: 
-        - Del componente a la vista: interpolación {{}}, binding de propiedades []
-        - De la vista al componente: binding de eventos ()
-      - Signals en el estado del componente y en la plantilla.
-      - Signals y asincronía. Zoneless + Estrategia OnPush -->
+- Generación de componentes: `ng generate component <nombre>`.
+  - Estilos: Encapsulación de estilos. ViewEncapsulation.
+  - Componente 🧿CourseItem
+    - Programación declarativa en el template: 
+      - Del componente a la vista: interpolación {{}}, binding de propiedades []
+      - De la vista al componente: binding de eventos () -> ya lo veremos
+    - Signals en el estado del componente y en la plantilla.
+  - Componente 🧿CourseItemSignals
+    - Signals y asincronía. Zoneless + Estrategia OnPush 
   
   <!-- 
       - Estado en los componentes con ZoneJS v. Zoneless
         - Detección del cambio: Zone v. Zoneless
         - Detección del cambio: Estrategia OnPush
-      -->
-  
-<!-- - Testing de componentes. Pruebas unitarias
+   -->
+
+- Testing de componentes. Pruebas unitarias
   - Test con Vitest. Conceptos básicos y ejemplo
   - Elementos de los test en Angular: TestBed, fixture, detectChanges()
   - Test de implementación v. test de comportamiento.
   - Tests para componentes básicos.
     - Renderizado del componente (e.g. heading).
+
+### Día 2 (M-14): Componentes del Layout. 
+
+<!-- 
+- Componente 🧿CourseItemPro. Eventos ...
+
+- Testing de componentes. Pruebas unitarias
     - Interacción con el componente (e.g. click en un botón).
     - Procesos asíncronos. Timers -->
 
 - [Descanso]: 11:00 - 11:30
  
-<!-- - Estilos: Encapsulación de estilos. ViewEncapsulation.
+<!-- 
  
 - Scaffolding. Core
   - Componente 🧿Header. Estructura básica en CSS: Grid
