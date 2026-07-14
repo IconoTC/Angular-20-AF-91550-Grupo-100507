@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CourseItem } from './course-item';
+import { By } from '@angular/platform-browser';
 
 describe('CourseItem', () => {
   let component: CourseItem;
@@ -35,4 +36,11 @@ describe('CourseItem', () => {
     const element = fixture.nativeElement as HTMLElement;
     expect(element.querySelector('h3')?.textContent).toContain('Curso de Angular');
   });
+
+  it('should render course title (with debug)', async () => {
+    const debugElement = fixture.debugElement;
+    const h3Element = debugElement.query(By.css('h3'));
+    expect(h3Element?.nativeElement.textContent).toContain('Curso de Angular');
+  });
+
 });

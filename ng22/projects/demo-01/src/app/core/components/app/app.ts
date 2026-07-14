@@ -1,17 +1,17 @@
-import { Component, signal } from '@angular/core';
+import { Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CourseItem } from '../../../features/courses/components/course-item/course-item';
 import { CourseItemSignals } from '../../../features/courses/components/course-item-signals/course-item-signals';
 import { CourseItemPro } from '../../../features/courses/components/course-item-pro/course-item-pro';
+import { Header } from '../header/header';
+import { Footer } from '../footer/footer';
 
 
 @Component({
   selector: 'ind-root',
-  imports: [RouterOutlet, CourseItem, CourseItemSignals, CourseItemPro],
+  imports: [RouterOutlet, CourseItem, CourseItemSignals, CourseItemPro, Header, Footer],
   template: `
-    <header>
-      <h1>{{ title() }}</h1>
-    </header>
+    <ind-header />
     <main class="container">
       <router-outlet />
       <p>Este es un proyecto de demostración de Angular 22</p>
@@ -22,7 +22,7 @@ import { CourseItemPro } from '../../../features/courses/components/course-item-
         <ind-course-item-signals />
       </details>
     </main>
-    <footer>footer</footer>
+    <ind-footer />
   `,
   styles: `
   :host {
@@ -48,5 +48,5 @@ import { CourseItemPro } from '../../../features/courses/components/course-item-
   `,
 })
 export class App {
-  protected readonly title = signal('Curso de Angular 22')
+  //protected readonly title = signal('Curso de Angular 22')
 }
