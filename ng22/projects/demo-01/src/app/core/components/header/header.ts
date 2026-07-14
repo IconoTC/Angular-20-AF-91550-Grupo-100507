@@ -1,13 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { User } from "../user/user";
-import { Separator } from "../separator/separator";
+import { User } from '../user/user';
+import { Separator } from '../separator/separator';
 import { Toggle } from '../toggle/toggle';
+import { Search } from '../search/search';
+import { SearchRef } from '../search/search-ref';
 
 @Component({
   selector: 'ind-header',
-  imports: [User, Separator, Toggle],
+  imports: [User, Separator, Toggle, Search, SearchRef],
   template: `
-   <header class="container">
+    <header class="container">
       <div class="left-side">
         <ng-content select="[slot=left]" />
       </div>
@@ -26,14 +28,18 @@ import { Toggle } from '../toggle/toggle';
           <div>
             <ng-content select="[slot=menu]" />
           </div>
-          <div>Search</div>
+          <div>
+            <ind-search />
+            <br>
+            <ind-search-ref />
+          </div>
         </div>
       </div>
     </header>
     <ind-separator />
   `,
   styles: `
-  :host {
+    :host {
       margin-bottom: 1.5rem;
       min-height: 15vh;
       color: var(--color-primary-hot);
@@ -101,9 +107,10 @@ import { Toggle } from '../toggle/toggle';
         gap: 1rem;
         margin-top: 1rem;
       }
-    }`,
+    }
+  `,
 })
 export class Header {
-  protected readonly title = signal('Curso de Angular 22')
-  protected readonly subtitle = signal('Aprende a desarrollar aplicaciones con Angular 22')
+  protected readonly title = signal('Curso de Angular 22');
+  protected readonly subtitle = signal('Aprende a desarrollar aplicaciones con Angular 22');
 }
