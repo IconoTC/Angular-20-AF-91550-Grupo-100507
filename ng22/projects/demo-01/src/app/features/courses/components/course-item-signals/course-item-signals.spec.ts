@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CourseItemSignals } from './course-item-signals';
 
-describe.todo('CourseItemSignals', () => {
+describe('CourseItemSignals', () => {
   let component: CourseItemSignals;
   let fixture: ComponentFixture<CourseItemSignals>;
 
@@ -16,10 +16,10 @@ describe.todo('CourseItemSignals', () => {
     }).compileComponents();
   });
 
-  async function createComponent() {
+  function createComponent() {
     fixture = TestBed.createComponent(CourseItemSignals);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   }
 
   it('should create', () => {
@@ -27,16 +27,33 @@ describe.todo('CourseItemSignals', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should update plainMessage after 2 seconds', async () => {
+  it('should NOT update plainMessage after 2 seconds', async () => {
     vi.useFakeTimers();
-    await createComponent();
+    createComponent();
     vi.advanceTimersByTime(2100);
     fixture.detectChanges();
     await fixture.whenStable();
 
     const element = fixture.nativeElement as HTMLElement;
-    const pElement = element.querySelector('p')
+    const pElement = element.querySelectorAll('p')[1]
 
-    expect(pElement?.textContent).toBe('Mensaje actualizado después de 2 seg');
+    expect(pElement?.textContent).toBe('Este es un mensaje plano');
+    expect(pElement?.textContent).not.toContain('actualizado');
+  });
+
+    it('should update title WITH SIGNALS after 6 seconds', async () => {
+    vi.useFakeTimers();
+    createComponent();
+
+    vi.advanceTimersByTime(6100);
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const element = fixture.nativeElement as HTMLElement;
+    const h3Element = element.querySelector('h3');
+    const pElement = element.querySelectorAll('p')[1]
+
+    expect(h3Element?.textContent).toContain('Actualizado');
+    expect(pElement?.textContent).toContain('actualizado');
   });
 });
