@@ -179,91 +179,78 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 - Testing de componentes. Pruebas unitarias
     - Interacción con el componente (e.g. click en un botón).
-    - Procesos asíncronos. Timers -->
+    - Procesos asíncronos. Timers
 
-<!-- 
-- [Descanso]: 11:00 - 11:30
- 
-<!-- 
- 
 - Scaffolding. Core
   - Componente 🧿Header. Estructura básica en CSS: Grid
   - Componente 🧿Footer
+   - Test de Header y Footer
+  - Componente 🧿LogoCoders. Fichero svg como template
+  - Componente 🧿User. Svg como parte del template
+    - Test de LogoCoders. Spies & mocks
   - Componente 🧿Card. Proyección de contenido
-  - Uso en el componente 🧿App como contenedor principal.
-  - Test de Header, Footer y Card
-  
+    - Uso en el componente 🧿App como contenedor principal.
+    - Test de Card. TestingComponent
+
+- [Descanso]: 11:30 - 12:00
+ 
 - Componentes de navegación  
   - 🧿Menu. Tipo y datos. Iteración con @for
-  - 🧿MenuMobile. Svg como parte del template
-  - Incorporación en App: RWD basado en CSS y media queries
+  - Incorporación en App
   - 🧿Socials. @for + @switch: iconos svg de las redes sociales
+  - Test de Menu y Socials. Renderizado y @for @switch
 
-- Componentes gráficos
+- Componentes CSS
+  - 🧿toggle: Widget css como componente Angular
   - 🧿Separador. Componente de CSS
-  - 🧿LogoCoders. Fichero svg como template
+
 
 - Componente 🧿Search. Input de usuario: 2 way data binding. [(ngModel)]
 - Referencias locales. #ref
   - Signal queries: viewChild, focus()
-  - Ciclo de vida de los componentes -->
-
-
-### Día 3 (X-15). Paginas. Componentes activos. Comunicaciones
-
-<!-- - Referencias locales (continuación)
+  - Ciclo de vida de los componentes 
   - Effects (primitiva de signal) 
-  - Componente 🧿SearchRef. Referencias locales en el template.  
 
-- Testing de todos los componentes
-  - Test de Search. Renderizado y data binding. -->
+- Componente 🧿SearchRef. Referencias locales en el template.  
 
-<!--
-  - Test de Menu, MenuMobile y Socials. Renderizado y @for @switch
--->
+- Test de Search. Renderizado y data binding
 
-<!-- - Componente 🧿user. Nuevo ejemplo de CSS
-- Componente 🧿toggle: Widget css como componente Angular
-- Test de Toggle. Spies & Mocks. 
+<!-- (Al día siguiente por falta de tiempo)
 
 - Scaffolding. Features
   - Componentes (pages): 🧿Home, 🧿Dashboard, 🧿About (Angular).
-  - Ejercicio de componentization
-    - 🧿Componentes incluidos en la demo de Angular -->
+  - Test de las páginas
 
-[Descanso]: 11:00 - 11:30
+   - Ejercicio de componentization
+    - 🧿Componentes incluidos en la demo de Angular
+-->
 
-<!-- - Componentes activos.
+
+### Día 3 (X-15). Paginas. Comunicaciones entre Componentes. Rutas 
+
+<!--
+- Scaffolding. Features
+  - Componentes (pages): 🧿Home, 🧿Dashboard, 🧿About (Angular).
+  - Test de las páginas
+- Comunicación entre componentes (1)
+  - Input. Decoradores @Input. función input(). Drilling
+
+- Dashboard.
   - Componente 🧿Counter. Estado y eventos (click)
   - Refactor Componente Counter. Condicionales @If. [class}
 
 - Testing de todos los componentes
   - Test de Counter. Eventos. Errores al testear implementación -->
 
-<!-- 
-  - Test de las páginas
--->
-
-<!-- - Comunicación entre componentes
-
-  - Input. Decoradores @Input. función input(). Drilling
+<!-- - Comunicación entre componentes (2)  
   - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
   - 🧿CounterList. Agrupando contadores. Estado en el componente padre
-  - Contadores. Eventos con valor.  -->
-
-### Día 4 (J-16). Rutas. Arquitectura de componentes. Formularios TD
-
-<!-- - Comunicación entre componentes (continuación)
+  - Contadores. Eventos con valor.  
   - Input en los contadores. Revision de los totales
   - Computed signals 
   - Test de inputs y outputs. 
+-->
 
-- Signal model()
-  - Componente 🧿Check. Input y Output. Design System CheckBox
-  - Componente 🧿Terms. Input y Output. Comunicación entre componentes
-  - Uso de model en esta situación -->
-
-- [Descanso] - 11:00 - 11:30
 
 <!-- - Rutas básicas. `app.routes.ts`
   - Array de rutas.
@@ -272,17 +259,36 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Navegación. Componente menu. @for
   - SPA: RouterLink y RouterLinkActive
 - Rutas Lazy. Default import en las páginas
-- Comentado: guards, resolvers, rotas anidadas
+- Comentado: guards, resolvers, rotas anidadas -->
 
+[Descanso]: 11:00 - 11:30
+
+<!-- 
 - Pipes
   - DatePipe. Location "es". Usar por defecto: inyección de dependencias
 - Directivas. Directivas propias
   - Directivas de atributo: Stick
-  - Directivas estructurales: introducción -->
+  - Directivas estructurales: introducción -
+    - Directivas estructurales: ejemplo
+-->
+
+
+### Día 4 (J-16). Rutas. Arquitectura de componentes. Formularios TD
+
+<!-- 
+
+- Signal model()
+  - Componente 🧿Check. Input y Output. Design System CheckBox
+  - Componente 🧿Terms. Input y Output. Comunicación entre componentes
+  - Uso de model en esta situación -->
+
+- [Descanso] - 11:00 - 11:30
+
+
 
 ### Día 5 (V-17).  Servicios. Providers e injectors. Formularios DD
 
-<!-- - Directivas estructurales: ejemplo
+<!-- 
 
 - Arquitectura de componentes
   - Componentes de contenedores vs de presentación.
@@ -335,7 +341,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - FormGroup, FormControl, FormBuilder
   - Binding desde el template  -->
 
-<!-- ### Día 6 (L-22). Servicios HTTP. Arquitectura ¿despliegue? -->
+### Día 6 (L-22). Servicios HTTP. Arquitectura ¿despliegue? 
 
 
 <!-- - Formularios reactivos (continuación).
