@@ -124,8 +124,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 - Angular CLI: Comandos básicos (2).
   - Testing con Vitest: `ng test`.
-  - Testing con Playwright: `ng e2e`.
-    - Problemas de versiones. Actualización con Version Lens 
+  - Testing con Playwright: `ng e2e`
   - Despliegue: `ng deploy`. Opciones
 
 - Generación de componentes: `ng generate`.
@@ -172,16 +171,17 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Test de implementación v. test de comportamiento.
   - Tests para componentes básicos.
     - Renderizado del componente (e.g. heading).
+  - Coverage. Instalación v-8
 
 ### Día 2 (M-14): Componentes del Layout. 
 
-<!-- 
 - Componente 🧿CourseItemPro. Eventos ...
 
 - Testing de componentes. Pruebas unitarias
     - Interacción con el componente (e.g. click en un botón).
     - Procesos asíncronos. Timers -->
 
+<!-- 
 - [Descanso]: 11:00 - 11:30
  
 <!-- 
