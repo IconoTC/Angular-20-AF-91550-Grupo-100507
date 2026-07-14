@@ -12,6 +12,7 @@ describe('CourseItem', () => {
 
     fixture = TestBed.createComponent(CourseItem);
     component = fixture.componentInstance;
+    // anteriormente fixture.detectChanges();
     await fixture.whenStable();
   });
 
