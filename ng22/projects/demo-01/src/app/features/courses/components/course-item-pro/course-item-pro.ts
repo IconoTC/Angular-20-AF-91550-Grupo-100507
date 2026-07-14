@@ -119,9 +119,6 @@ import { Course } from '../../types/course';
       align-items: center;
       gap: 1rem;
       margin: 1rem;
-      padding: 1rem;
-      border: 1px solid var(--color-primary);
-      border-radius: 4px;
     }
     .details {
       text-align: center;
