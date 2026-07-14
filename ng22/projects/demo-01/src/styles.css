@@ -100,10 +100,6 @@ html:has(#theme-toggle:checked) {
   color-scheme: dark;
 }
 
-html:has(#theme-toggle:indeterminate) {
-  color-scheme: light;
-}
-
 body {
   margin: 0;
   padding: 0;

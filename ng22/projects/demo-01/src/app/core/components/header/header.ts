@@ -1,9 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { User } from "../user/user";
+import { Separator } from "../separator/separator";
+import { Toggle } from '../toggle/toggle';
 
 @Component({
   selector: 'ind-header',
-  imports: [ User],
+  imports: [User, Separator, Toggle],
   template: `
    <header class="container">
       <div class="left-side">
@@ -16,7 +18,7 @@ import { User } from "../user/user";
         <div class="user-icons">
           <ind-user />
         </div>
-        <div class="system-icons">System Icons (Toggle)</div>
+        <div class="system-icons"><ind-toggle /></div>
       </div>
       <div class="bottom-row">
         <p class="first-line">{{ subtitle() }}</p>
@@ -28,7 +30,7 @@ import { User } from "../user/user";
         </div>
       </div>
     </header>
-    <div>------Separador</div>
+    <ind-separator />
   `,
   styles: `
   :host {
