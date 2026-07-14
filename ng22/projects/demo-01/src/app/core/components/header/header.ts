@@ -1,16 +1,22 @@
 import { Component, signal } from '@angular/core';
+import { LogoCoders } from "../logo-coders/logo-coders";
+import { User } from "../user/user";
 
 @Component({
   selector: 'ind-header',
-  imports: [],
+  imports: [LogoCoders, User],
   template: `
    <header class="container">
-      <div class="left-side">Slot: Logo Global</div>
+      <div class="left-side">
+        <ind-logo-coders />
+      </div>
       <hgroup>
         <h1>{{ title() }}</h1>
       </hgroup>
       <div class="right-side">
-        <div class="user-icons">User Icons</div>
+        <div class="user-icons">
+          <ind-user />
+        </div>
         <div class="system-icons">System Icons (Toggle)</div>
       </div>
       <div class="bottom-row">
