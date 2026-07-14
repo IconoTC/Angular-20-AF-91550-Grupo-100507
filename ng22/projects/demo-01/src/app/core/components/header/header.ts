@@ -1,14 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { LogoCoders } from "../logo-coders/logo-coders";
 import { User } from "../user/user";
 
 @Component({
   selector: 'ind-header',
-  imports: [LogoCoders, User],
+  imports: [ User],
   template: `
    <header class="container">
       <div class="left-side">
-        <ind-logo-coders />
+        <ng-content select="[slot=left]" />
       </div>
       <hgroup>
         <h1>{{ title() }}</h1>
@@ -22,7 +21,9 @@ import { User } from "../user/user";
       <div class="bottom-row">
         <p class="first-line">{{ subtitle() }}</p>
         <div class="second-line">
-          <div>Slot: Menu</div>
+          <div>
+            <ng-content select="[slot=menu]" />
+          </div>
           <div>Search</div>
         </div>
       </div>

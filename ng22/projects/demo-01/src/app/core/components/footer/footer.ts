@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
         <p>{{ autor() }}</p>
         <p>{{ brand() }} © {{ today().getFullYear() }}</p>
       </address>
+      <ng-content />
     </footer>
   `,
   styles: `

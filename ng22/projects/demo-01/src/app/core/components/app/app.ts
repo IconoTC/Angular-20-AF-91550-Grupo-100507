@@ -1,18 +1,34 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CourseItem } from '../../../features/courses/components/course-item/course-item';
 import { CourseItemSignals } from '../../../features/courses/components/course-item-signals/course-item-signals';
 import { CourseItemPro } from '../../../features/courses/components/course-item-pro/course-item-pro';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
-import { Card } from "../card/card";
-
+import { Card } from '../card/card';
+import { LogoCoders } from '../logo-coders/logo-coders';
+import { Menu } from '../menu/menu';
+import { Socials } from '../socials/socials';
 
 @Component({
   selector: 'ind-root',
-  imports: [RouterOutlet, CourseItem, CourseItemSignals, CourseItemPro, Header, Footer, Card],
+  imports: [
+    RouterOutlet,
+    LogoCoders,
+    Menu,
+    CourseItem,
+    CourseItemSignals,
+    CourseItemPro,
+    Header,
+    Footer,
+    Card,
+    Socials,
+  ],
   template: `
-    <ind-header />
+    <ind-header>
+      <ind-logo-coders slot="left" />
+      <ind-menu slot="menu" />
+    </ind-header>
     <main class="container">
       <router-outlet />
       <p>Este es un proyecto de demostración de Angular 22</p>
@@ -25,10 +41,12 @@ import { Card } from "../card/card";
         <ind-course-item-signals />
       </details>
     </main>
-    <ind-footer />
+    <ind-footer>
+      <ind-socials />
+    </ind-footer>
   `,
   styles: `
-  :host {
+    :host {
       display: grid;
       grid-template-rows: auto 1fr auto;
       min-height: 100vh;
@@ -47,7 +65,6 @@ import { Card } from "../card/card";
       padding: 1rem;
       position: relative;
     }
-
   `,
 })
 export class App {
