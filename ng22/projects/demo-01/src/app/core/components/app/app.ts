@@ -5,10 +5,6 @@ import { Footer } from '../footer/footer';
 import { LogoCoders } from '../logo-coders/logo-coders';
 import { Menu } from '../menu/menu';
 import { Socials } from '../socials/socials';
-import HomePage from '../../../features/home/home-page';
-import CoursesPage from '../../../features/courses/courses-page';
-import AboutPage from '../../../features/about/about-page';
-import DashboardPage from '../../../features/dashboard/dashboard-page';
 import { MenuOption } from '../../types/menu-option';
 import { getMenuItems } from '../../../app.routes';
 
@@ -18,10 +14,6 @@ import { getMenuItems } from '../../../app.routes';
     RouterOutlet,
     LogoCoders,
     Menu,
-    HomePage,
-    CoursesPage,
-    DashboardPage,
-    AboutPage,
     Header,
     Footer,
     Socials,
@@ -33,11 +25,6 @@ import { getMenuItems } from '../../../app.routes';
     </ind-header>
     <main class="container">
       <router-outlet />
-      <p>El router cargará la página adecuada</p>
-      <ind-home-page id="home"/>
-      <ind-courses-page id="courses"/>
-      <ind-dashboard-page id="dashboard"/>
-      <ind-about-page id="about"/>
     </main>
     <ind-footer>
       <ind-socials />
