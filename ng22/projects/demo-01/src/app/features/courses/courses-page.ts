@@ -3,17 +3,13 @@ import { Card } from '../../core/components/card/card';
 import { CourseItemPro } from './components/course-item-pro/course-item-pro';
 import { CourseItemSignals } from './components/course-item-signals/course-item-signals';
 import { CourseItem } from './components/course-item/course-item';
+import { Filter } from './components/filter/filter';
 
 @Component({
   selector: 'ind-courses-page',
-  imports: [
-     CourseItem,
-        CourseItemSignals,
-        CourseItemPro,
-        Card,
-  ],
-  template: ` 
-    <h2>{{ title() }}</h2>
+  imports: [Filter, CourseItem, CourseItemSignals, CourseItemPro, Card],
+  template: ` <h2>{{ title() }}</h2>
+    <ind-filter />
     <ind-card>
       <ind-course-item-pro />
     </ind-card>

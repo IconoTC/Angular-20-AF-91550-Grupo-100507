@@ -2,9 +2,6 @@ import { Component, computed, signal } from '@angular/core';
 import { Card } from '../../../../core/components/card/card';
 import { CounterPro } from '../counter-pro/counter-pro';
 import { CounterState } from '../../types/counter-state';
-import { JsonPipe } from '@angular/common';
-
-
 
 const COUNTERS: CounterState[] = [
     { id: 17, clicks: 0,  value: 0 },
@@ -15,7 +12,7 @@ const COUNTERS: CounterState[] = [
 
 @Component({
   selector: 'ind-counters-list',
-  imports: [CounterPro, Card, JsonPipe],
+  imports: [CounterPro, Card],
   template: `
     <p>Total clicks: {{ totalClicks() }}</p>
     <p>Total count: {{ totalCount() }}</p>
