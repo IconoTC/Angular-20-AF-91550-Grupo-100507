@@ -1,7 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { Menu } from './menu';
 import { By } from '@angular/platform-browser';
+import { Menu } from './menu';
+import { MenuOption } from '../../types/menu-option';
+
+
+const menuOptionsMock: MenuOption[] = [
+  { label: 'Home', path: '/home' },
+  { label: 'About', path: '/about' },
+];
 
 describe('Menu', () => {
   let component: Menu;
@@ -14,6 +20,9 @@ describe('Menu', () => {
 
     fixture = TestBed.createComponent(Menu);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('options', menuOptionsMock);
+
     await fixture.whenStable();
   });
 

@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CourseItem } from '../../../features/courses/components/course-item/course-item';
-import { CourseItemSignals } from '../../../features/courses/components/course-item-signals/course-item-signals';
-import { CourseItemPro } from '../../../features/courses/components/course-item-pro/course-item-pro';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
-import { Card } from '../card/card';
 import { LogoCoders } from '../logo-coders/logo-coders';
 import { Menu } from '../menu/menu';
 import { Socials } from '../socials/socials';
+import HomePage from '../../../features/home/home-page';
+import CoursesPage from '../../../features/courses/courses-page';
+import AboutPage from '../../../features/about/about-page';
+import DashboardPage from '../../../features/dashboard/dashboard-page';
+import { MenuOption } from '../../types/menu-option';
+import { getMenuItems } from '../../../app.routes';
 
 @Component({
   selector: 'ind-root',
@@ -16,30 +18,26 @@ import { Socials } from '../socials/socials';
     RouterOutlet,
     LogoCoders,
     Menu,
-    CourseItem,
-    CourseItemSignals,
-    CourseItemPro,
+    HomePage,
+    CoursesPage,
+    DashboardPage,
+    AboutPage,
     Header,
     Footer,
-    Card,
     Socials,
   ],
   template: `
-    <ind-header>
+    <ind-header [app-title]="title()" [subtitle]="subtitle()">
       <ind-logo-coders slot="left" />
-      <ind-menu slot="menu" />
+      <ind-menu [options]="menuOptions()" slot="menu" />
     </ind-header>
     <main class="container">
       <router-outlet />
-      <p>Este es un proyecto de demostración de Angular 22</p>
-      <ind-card>
-        <ind-course-item-pro />
-      </ind-card>
-      <details>
-        <summary>Componentes de ejemplo previos</summary>
-        <ind-course-item />
-        <ind-course-item-signals />
-      </details>
+      <p>El router cargará la página adecuada</p>
+      <ind-home-page id="home"/>
+      <ind-courses-page id="courses"/>
+      <ind-dashboard-page id="dashboard"/>
+      <ind-about-page id="about"/>
     </main>
     <ind-footer>
       <ind-socials />
@@ -68,5 +66,7 @@ import { Socials } from '../socials/socials';
   `,
 })
 export class App {
-  //protected readonly title = signal('Curso de Angular 22')
+  protected readonly title = signal('Curso de Angular 22')
+  protected readonly subtitle = signal('Aprende a desarrollar aplicaciones con Angular 22');
+  protected readonly menuOptions = signal<MenuOption[]>(getMenuItems());
 }
