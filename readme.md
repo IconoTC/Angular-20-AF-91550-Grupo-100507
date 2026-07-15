@@ -175,7 +175,9 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ### Día 2 (M-14): Componentes del Layout. 
 
-- Componente 🧿CourseItemPro. Eventos ...
+- Componente 🧿CourseItemPro. 
+  - Eventos
+  - Computed signals
 
 - Testing de componentes. Pruebas unitarias
     - Interacción con el componente (e.g. click en un botón).
@@ -228,7 +230,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ### Día 3 (X-15). Paginas. Comunicaciones entre Componentes. Rutas 
 
-<!--
 - Scaffolding. Features
   - Componentes (pages): 🧿Home, 🧿Dashboard, 🧿About (Angular).
   - Test de las páginas
@@ -240,28 +241,43 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Refactor Componente Counter. Condicionales @If. [class}
 
 - Testing de todos los componentes
-  - Test de Counter. Eventos. Errores al testear implementación -->
+  - Test de Counter. Eventos. Errores al testar implementación -->
 
-<!-- - Comunicación entre componentes (2)  
+- Comunicación entre componentes (2)  
   - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
   - 🧿CounterList. Agrupando contadores. Estado en el componente padre
   - Contadores. Eventos con valor.  
   - Input en los contadores. Revision de los totales
   - Computed signals 
   - Test de inputs y outputs. 
--->
 
+- linkedSignals (1)
+  - sincronización de diversas "fuentes" de cambio
+  - 🧿Filter-options. selectedOption como linkedSignal
 
-<!-- - Rutas básicas. `app.routes.ts`
+[Descanso]: 11:30 - 12:00
+
+- linkedSignals (2)
+  - 🧿Filter. Comunicación entre componentes con linkedSignals
+  
+<!-- 
+- Rutas básicas. `app.routes.ts`
   - Array de rutas.
   - Array de opciones de menu
   - RouterOutlet en AppComponent.
   - Navegación. Componente menu. @for
   - SPA: RouterLink y RouterLinkActive
 - Rutas Lazy. Default import en las páginas
-- Comentado: guards, resolvers, rotas anidadas -->
+- Comentado: guards, resolvers, rotas anidadas
+-->
 
-[Descanso]: 11:00 - 11:30
+<!-- 
+- Introducción a los servicios en Angular.
+- Servicios y Providers. DI (Dependency Injection)
+  - Provider root v. provider en un componente / ruta
+  - Ejemplo con un servicio simple: Time
+  - Injector jerárquico. Servicios singleton y no singleton.  
+-->
 
 <!-- 
 - Pipes
@@ -271,7 +287,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Directivas estructurales: introducción -
     - Directivas estructurales: ejemplo
 -->
-
 
 ### Día 4 (J-16). Rutas. Arquitectura de componentes. Formularios TD
 
@@ -307,6 +322,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 <!-- - Componente Notes-Form. Validaciones 
 
+[Movido antes]
 - Introducción a los servicios en Angular.
 - Servicios y Providers. DI (Dependency Injection)
   - Provider root v. provider en un componente / ruta
