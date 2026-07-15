@@ -228,7 +228,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 -->
 
 
-### Día 3 (X-15). Paginas. Comunicaciones entre Componentes. Rutas 
+### Día 3 (X-15). Paginas. Comunicaciones entre Componentes. Rutas, Servicios 
 
 - Scaffolding. Features
   - Componentes (pages): 🧿Home, 🧿Dashboard, 🧿About (Angular).
@@ -260,7 +260,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 - linkedSignals (2)
   - 🧿Filter. Comunicación entre componentes con linkedSignals
   
-<!-- 
 - Rutas básicas. `app.routes.ts`
   - Array de rutas.
   - Array de opciones de menu
@@ -268,18 +267,20 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Navegación. Componente menu. @for
   - SPA: RouterLink y RouterLinkActive
 - Rutas Lazy. Default import en las páginas
-- Comentado: guards, resolvers, rotas anidadas
--->
 
-<!-- 
+- 🧿Info. Componente para probar servicios...
 - Introducción a los servicios en Angular.
 - Servicios y Providers. DI (Dependency Injection)
   - Provider root v. provider en un componente / ruta
   - Ejemplo con un servicio simple: Time
   - Injector jerárquico. Servicios singleton y no singleton.  
--->
+- Servicio Logger. Uso de tokens de inyección
+
+### Día 4 (J-16). Pipes y directivas. Formularios TD, DD, SD
 
 <!-- 
+- 🧿Logger-Demo. Usos del servicio Logger
+
 - Pipes
   - DatePipe. Location "es". Usar por defecto: inyección de dependencias
 - Directivas. Directivas propias
@@ -288,23 +289,35 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
     - Directivas estructurales: ejemplo
 -->
 
-### Día 4 (J-16). Rutas. Arquitectura de componentes. Formularios TD
-
 <!-- 
-
 - Signal model()
   - Componente 🧿Check. Input y Output. Design System CheckBox
   - Componente 🧿Terms. Input y Output. Comunicación entre componentes
-  - Uso de model en esta situación -->
+  - Uso de model en esta situación 
+-->
 
 - [Descanso] - 11:00 - 11:30
 
+<!-- 
+ - Forms Template Driven (TD)
+      - NgForm implícito, NgModel. Referencias locales
+      - Paso de ngForm al onSubmit: form.value; form.reset()
+      - Componente Notes-Form. Validaciones 
 
+- Formularios reactivos (DD). LoginForm
+  - FormGroup, FormControl, FormBuilder
+  - Binding desde el template  -->
 
-### Día 5 (V-17).  Servicios. Providers e injectors. Formularios DD
+<!-- - Formularios reactivos (continuación).
+  - Validaciones síncronas (y asíncronas).
+    - Mensajes de validación 
+
+- Signal Forms.
+  - RegisterForm. Otros controles HTML -->
+
+### Día 5 (V-17).  Arquitectura de componentes. 
 
 <!-- 
-
 - Arquitectura de componentes
   - Componentes de contenedores vs de presentación.
   - Componentes inteligentes vs tontos.
@@ -314,21 +327,20 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Componente Notes-List. Lógica del estado
   - Componente Notes-Item. Input y Output (Eventos)
   - Componente Notes-Form. Output (Eventos) 
-    - Forms Template Driven (TD)
-      - NgForm implícito, NgModel. Referencias locales
-      - Paso de ngForm al onSubmit: form.value; form.reset() -->
+  -->
 
 - [Descanso] 11:00 - 11:30
 
-<!-- - Componente Notes-Form. Validaciones 
-
+<!-- 
 [Movido antes]
 - Introducción a los servicios en Angular.
 - Servicios y Providers. DI (Dependency Injection)
   - Provider root v. provider en un componente / ruta
   - Ejemplo con un servicio simple: Time
   - Injector jerárquico. Servicios singleton y no singleton.
+-->
 
+<!-- 
 - Servicios y patrón Repository
   - Mock de datos. Interface de los repositorios
   - Uso de promesas y observables (RxJS) en los servicios.
@@ -353,19 +365,9 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
       - Test de promesas (async, whenStable, expectAsync).
     - Testing de componentes con servicios (mocks y spies). -->
 
-<!-- - Formularios reactivos (DD). LoginForm
-  - FormGroup, FormControl, FormBuilder
-  - Binding desde el template  -->
+
 
 ### Día 6 (L-22). Servicios HTTP. Arquitectura ¿despliegue? 
-
-
-<!-- - Formularios reactivos (continuación).
-  - Validaciones síncronas (y asíncronas).
-    - Mensajes de validación 
-
-- Signal Forms.
-  - RegisterForm. Otros controles HTML -->
 
 <!-- - Testing de formularios reactivos. -->
 
