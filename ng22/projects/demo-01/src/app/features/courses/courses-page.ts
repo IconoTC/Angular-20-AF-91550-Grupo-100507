@@ -1,9 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Card } from '../../core/components/card/card';
 import { CourseItemPro } from './components/course-item-pro/course-item-pro';
 import { CourseItemSignals } from './components/course-item-signals/course-item-signals';
 import { CourseItem } from './components/course-item/course-item';
 import { Filter } from './components/filter/filter';
+import { Time } from '../../core/services/time';
 
 @Component({
   selector: 'ind-courses-page',
@@ -17,10 +18,13 @@ import { Filter } from './components/filter/filter';
       <summary>Componentes de ejemplo previos</summary>
       <ind-course-item />
       <ind-course-item-signals />
-    </details>`,
+    </details>
+    <p>TimeStamp: {{ ts.getTime() }}</p>
+    `,
   styles: ``,
   styleUrls: ['../pages.css'],
 })
 export default class CoursesPage {
   protected readonly title = signal('Cursos').asReadonly();
+  protected readonly ts = inject(Time)
 }
