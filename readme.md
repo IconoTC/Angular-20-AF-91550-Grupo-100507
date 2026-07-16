@@ -241,7 +241,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Refactor Componente Counter. Condicionales @If. [class}
 
 - Testing de todos los componentes
-  - Test de Counter. Eventos. Errores al testar implementación -->
+  - Test de Counter. Eventos. Errores al testar implementación
 
 - Comunicación entre componentes (2)  
   - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
@@ -274,18 +274,21 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Provider root v. provider en un componente / ruta
   - Ejemplo con un servicio simple: Time
   - Injector jerárquico. Servicios singleton y no singleton.  
-- Servicio Logger. Uso de tokens de inyección
+- Servicio Logger. 
+  - environments de Angular
+  - Uso de tokens de inyección
 
 ### Día 4 (J-16). Pipes y directivas. Formularios TD, DD, SD
 
-<!-- 
 - 🧿Logger-Demo. Usos del servicio Logger
 
 - Pipes
   - DatePipe. Location "es". Usar por defecto: inyección de dependencias
+
+<!-- Solo comentado 
 - Directivas. Directivas propias
   - Directivas de atributo: Stick
-  - Directivas estructurales: introducción -
+  - Directivas estructurales: introducción
     - Directivas estructurales: ejemplo
 -->
 
