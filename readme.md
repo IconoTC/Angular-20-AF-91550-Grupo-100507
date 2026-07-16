@@ -73,7 +73,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - `Patrones de arquitectura recomendados para manejo de estado`
   - `Uso básico de BehaviorSubject y Signals compartidos` 
   - `Introducción a estado compartido simple sin NgRx` 
-  - Conceptos de gestión de estado reactivo a mayor escala (sin librerías externas) 
+  - Conceptos de gestión de estado reactivo a mayor escala (sin librerías externas).
 - Testing de componentes y servicios 
   - `Importancia de testear en Angular`
   - `Configuración del entorno de testing` 
@@ -280,10 +280,12 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ### Día 4 (J-16). Pipes y directivas. Formularios TD, DD, SD
 
+- Test del servicio Logger. Casos de uso 
 - 🧿Logger-Demo. Usos del servicio Logger
 
 - Pipes
-  - DatePipe. Location "es". Usar por defecto: inyección de dependencias
+  - DatePipe. Location "es". 
+  - Usar por defecto: inyección de dependencias
 
 <!-- Solo comentado 
 - Directivas. Directivas propias
@@ -292,6 +294,45 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
     - Directivas estructurales: ejemplo
 -->
 
+- Feature Auth
+  - Rutas anidadas. 
+    - Login y Register
+    - Fichero de rutas propio de Auth. `auth.routes.ts`
+  - Rutas con parámetros
+    - LoginPage. Parámetros y formularios posibles
+      (tdf, mdf-rx, signals)
+    - RegisterPage. Parámetros y formularios posibles
+      (monolithic, custom)
+    - @if / @switch
+  - Selección del formulario: 🧿Componente sidebar. 
+    - linkedSignals. Comunicación entre componentes
+    - respuesta a la navegación. router.events.subscribe()
+
+- [Descanso] - 11:30 - 12:00
+
+- 🧿Componente LoginFormTdf: Forms Template Driven (TD)
+    - NgForm implícito, NgModel. Referencias locales
+    - Paso de ngForm al onSubmit: form.value; form.reset()
+    - Validaciones 
+
+- 🧿Componente LoginFormMdfRx: Formularios reactivos (DD). LoginForm
+  - FormGroup, FormControl, FormBuilder
+  - Binding desde el template  [formGroup] y (ngSubmit)
+  - Validaciones síncronas (y asíncronas).
+    - Mensajes de validación 
+
+- 🧿Componente LoginFormSignals: Formularios con Signals.
+  - Model (signal), FieldTree, FieldState 
+  - Binding desde el template  [formField] y (submit)
+  - Schema de validación
+
+- RegisterForm. Otros controles HTML (comentado)
+
+- Custom controls
+  -  🧿Componente Input
+
+<!-- - Testing de formularios reactivos. -->
+
 <!-- 
 - Signal model()
   - Componente 🧿Check. Input y Output. Design System CheckBox
@@ -299,26 +340,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Uso de model en esta situación 
 -->
 
-- [Descanso] - 11:00 - 11:30
-
-<!-- 
- - Forms Template Driven (TD)
-      - NgForm implícito, NgModel. Referencias locales
-      - Paso de ngForm al onSubmit: form.value; form.reset()
-      - Componente Notes-Form. Validaciones 
-
-- Formularios reactivos (DD). LoginForm
-  - FormGroup, FormControl, FormBuilder
-  - Binding desde el template  -->
-
-<!-- - Formularios reactivos (continuación).
-  - Validaciones síncronas (y asíncronas).
-    - Mensajes de validación 
-
-- Signal Forms.
-  - RegisterForm. Otros controles HTML -->
-
-### Día 5 (V-17).  Arquitectura de componentes. 
+### Día 5 (V-17).  Arquitectura. Servicios repo (HTTP) y state 
 
 <!-- 
 - Arquitectura de componentes
@@ -331,17 +353,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Componente Notes-Item. Input y Output (Eventos)
   - Componente Notes-Form. Output (Eventos) 
   -->
-
-- [Descanso] 11:00 - 11:30
-
-<!-- 
-[Movido antes]
-- Introducción a los servicios en Angular.
-- Servicios y Providers. DI (Dependency Injection)
-  - Provider root v. provider en un componente / ruta
-  - Ejemplo con un servicio simple: Time
-  - Injector jerárquico. Servicios singleton y no singleton.
--->
 
 <!-- 
 - Servicios y patrón Repository
@@ -357,22 +368,21 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Servicio LocalNotesRepository: Repositorio y persistencia local (localStorage).
  -->
 
+<!-- 
+- Testing de servicios.
+  - Tests del servicio
+    - Test de métodos CRUD.
+    - Test de promesas (async, whenStable, expectAsync).
+  - Testing de componentes con servicios (mocks y spies). -->
+
+- [Descanso] 11:00 - 11:30
+
+
 <!-- - RxJS (Observables)
   - Introducción. Observables, subscription, operadores.
   - Los mismos repositorios usando RxJS (Observables). 
   - Uso del repo en el componente -->
 
-  <!-- - Testing de servicios.
-    - Tests del servicio
-      - Test de métodos CRUD.
-      - Test de promesas (async, whenStable, expectAsync).
-    - Testing de componentes con servicios (mocks y spies). -->
-
-
-
-### Día 6 (L-22). Servicios HTTP. Arquitectura ¿despliegue? 
-
-<!-- - Testing de formularios reactivos. -->
 
 <!-- - Introducción a los servicios HTTP en Angular.
 
@@ -387,17 +397,12 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 - Servicio HttpClient. Observables (RxJs).
 
   - Antes de Angular 21: Configuración del servicio HTTP: provider
-  - Feature Notes. Creación de un ApiRepositoryService. -->
-
-<!-- - [Descanso] 11:00 - 11:30 -->
-
-<!-- - Servicio HttpClient. Observables (RxJs).
+  - Feature Notes. Creación de un ApiRepositoryService. 
   - Uso desde el componente (NoteList).  
+-->
 
-- Tests de servicios HTTP real (sin mock) -->
-
-<!--
-
+<!-- 
+  - Tests de servicios HTTP real (sin mock) 
   - Tests de servicios HTTP con HttpTestingController
   - Test de componentes con servicios HTTP (mocks y spies).
 -->
@@ -424,9 +429,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - resources: httpClientResource (Angular 22)
   - linkedSignals
 - Interceptors y Guards
-- Testing -->
+- Testing 
 
- <!-- 
- - 🧿Modal y menu mobile: Inputs + Outputs. Comunicación indirecta entre componentes
-  (Podría ir después de rutas)ç
 -->
