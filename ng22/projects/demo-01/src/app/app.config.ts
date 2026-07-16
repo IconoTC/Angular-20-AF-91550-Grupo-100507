@@ -1,5 +1,5 @@
 import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import localeEs from '@angular/common/locales/es'
 import {registerLocaleData} from '@angular/common';
 import { routes } from './app.routes';
@@ -11,7 +11,7 @@ registerLocaleData(localeEs);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     {
       provide: ERROR_LEVEL,
       useValue: environment.LOGGER_LEVEL,

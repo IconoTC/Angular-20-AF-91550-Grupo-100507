@@ -20,7 +20,6 @@ import { Component } from '@angular/core';
       justify-content: center;
       align-items: center;
       border-top: 2px solid var(--color-primary);
-      margin-top: 1rem;
       padding-block-start: 1rem;
       min-height: 10vh;
     }

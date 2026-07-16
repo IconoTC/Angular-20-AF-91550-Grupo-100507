@@ -45,7 +45,6 @@ import { SearchRef } from '../search/search-ref';
   `,
   styles: `
     :host {
-      margin-bottom: 1.5rem;
       min-height: 15vh;
       color: var(--color-primary-hot);
       background-color: var(--color-background-primary);

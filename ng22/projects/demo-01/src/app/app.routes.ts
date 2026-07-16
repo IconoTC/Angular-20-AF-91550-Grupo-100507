@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MenuOption } from './core/types/menu-option';
 import { Time } from './core/services/time';
+import { authRoutes } from './features/auth/routes/auth.routes';
 
 export const routes: Routes = [
   {
@@ -25,7 +26,11 @@ export const routes: Routes = [
     data: {
       label: 'Dashboard',
     },
-    providers: [Time]
+    providers: [Time],
+  },
+  {
+    path: 'auth',
+    children: authRoutes
   },
   {
     path: 'courses',

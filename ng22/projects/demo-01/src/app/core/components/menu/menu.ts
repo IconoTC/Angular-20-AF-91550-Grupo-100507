@@ -6,7 +6,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'ind-menu',
   imports: [RouterLink, RouterLinkActive],
   template: `<nav>
-      <ul>
+      <ul [class.vertical]="isVertical()">
         @for (option of options(); track option.label) {
           <li>
             <a [routerLink]="option.path" [routerLinkActive]="'active'">{{ option.label }}</a>
@@ -27,9 +27,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
       .vertical {
         flex-direction: column;
-        a {
-          font-size: 1.8rem;
-        }
       }
 
       a {
@@ -49,4 +46,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Menu {
   readonly options = input.required<MenuOption[]>();
+  readonly isVertical = input<boolean>(false);
 }
