@@ -13,6 +13,7 @@ describe('Counter', () => {
 
     fixture = TestBed.createComponent(Counter);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('counter-id', 1);
     await fixture.whenStable();
   });
 

@@ -13,6 +13,7 @@ describe('FilterOptions', () => {
 
     fixture = TestBed.createComponent(FilterOptions);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('options', ['Option 1', 'Option 2', 'Option 3']);
     await fixture.whenStable();
   });
 
