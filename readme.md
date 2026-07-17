@@ -344,32 +344,25 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 -->
 
 ### Día 5 (V-17).  Arquitectura. Servicios repo (HTTP) y state 
-
-<!-- 
+ 
 - Arquitectura de componentes
   - Componentes de contenedores vs de presentación.
   - Componentes inteligentes vs tontos.
 
-- Ejemplo: Notes List
-  - Entidad Notes. Modelo y mock de datos asíncrono.
-  - Componente Notes-List. Lógica del estado
-  - Componente Notes-Item. Input y Output (Eventos)
-  - Componente Notes-Form. Output (Eventos) 
-  -->
+- Ejemplo: Courses List
+  - Entidad Courses. Modelo y mock de datos asíncrono.
+  - Componente Courses-List. Lógica del estado
+  - Componente Courses-Item. Input y Output (Eventos)
+  - Componente Courses-Form. Output (Eventos) 
 
-<!-- 
 - Servicios y patrón Repository
   - Mock de datos. Interface de los repositorios
   - Uso de promesas y observables (RxJS) en los servicios.
-  - Servicio TasksStore: Repositorio in-memory.
-  - Repositorio y lógica de negocio (estado). Estrategias 
-  - Métodos CRUD. getAll() y getById()
-  - Métodos CRUD. add(), update(), delete()
-  - Uso en los componentes. Inyección de dependencias. -->
 
-<!-- 
-  - Servicio LocalNotesRepository: Repositorio y persistencia local (localStorage).
- -->
+- RxJS (Observables)
+  - Introducción. Observables, subscription, operadores.
+  - Los mismos repositorios usando RxJS (Observables). 
+  - Uso del repo en el componente
 
 <!-- 
 - Testing de servicios.
@@ -378,31 +371,27 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
     - Test de promesas (async, whenStable, expectAsync).
   - Testing de componentes con servicios (mocks y spies). -->
 
-- [Descanso] 11:00 - 11:30
-
-
-<!-- - RxJS (Observables)
-  - Introducción. Observables, subscription, operadores.
-  - Los mismos repositorios usando RxJS (Observables). 
-  - Uso del repo en el componente -->
-
-
-<!-- - Introducción a los servicios HTTP en Angular.
-
-- Nuevo proyecto (demo-02). 
-
 - API server fake basado en JSONServer.
   - Prueba con Postman
 
-- Instalación y uso de environments. 
+- [Descanso] 11:00 - 11:30
+
+- Nuevo proyecto (demo-02). 
+
+- Uso de environments. 
   - Configuración de la URL base del API.
 
+- Introducción a los servicios HTTP en Angular.
 - Servicio HttpClient. Observables (RxJs).
 
   - Antes de Angular 21: Configuración del servicio HTTP: provider
   - Feature Notes. Creación de un ApiRepositoryService. 
   - Uso desde el componente (NoteList).  
--->
+ 
+  - Repositorio y lógica de negocio (estado). Estrategias 
+  - Métodos CRUD. getAll() y getById()
+  - Métodos CRUD. add(), update(), delete()
+  - Uso en los componentes. Inyección de dependencias.
 
 <!-- 
   - Tests de servicios HTTP real (sin mock) 
@@ -410,28 +399,30 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Test de componentes con servicios HTTP (mocks y spies).
 -->
  
-<!-- - Servicios stateful: patrón Flux. Feature Tasks
+- Servicios stateful: patrón Flux. Feature Courses
 
+  - Estado con Signals: signal (WriteableSignal) y readOnly/computed (Signal)
+  
+  - Servicio Store con CoursesState
+    - Estado privado con WriteableSignal
+    - Estado público con Signal (asReadOnly) 
+    - Métodos para modificar el estado (add, toggle, remove)
+    - Uso del estado desde los componentes ToDo...
+
+  - Uso desde cualquier parte de la aplicación (Header) 
+
+<!-- Mencionado
   - Estado con RxJS: Subjects
     - Estado privado con BehaviorSubject
     - Estado público con Observable (asObservable)
     - Métodos para modificar el estado (add, toggle, remove)
     - Gestión de errores
-  
-- Uso desde cualquier parte de la aplicación (Header) 
-  
-  - Estado con Signals: signal (WriteableSignal) y readOnly/computed (Signal)
-  
-  - Servicio Store con TasksState
-    - Estado privado con WriteableSignal
-    - Estado público con Signal (asReadOnly) -->
-  <!-- Métodos para modificar el estado (add, toggle, remove)
-    - Uso del estado desde los componentes ToDo...
+-->
 
+<!-- 
 - Más novedades (Signals)
   - resources: httpClientResource (Angular 22)
-  - linkedSignals
 - Interceptors y Guards
-- Testing 
-
+- Testing  
 -->
+
