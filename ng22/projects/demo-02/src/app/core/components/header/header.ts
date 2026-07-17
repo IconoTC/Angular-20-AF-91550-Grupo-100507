@@ -1,8 +1,9 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { User } from '../user/user';
 import { Separator } from '../separator/separator';
 import { Toggle } from '../toggle/toggle';
 import { Search } from '../search/search';
+import { Store } from '../../../features/courses/services/store';
 
 @Component({
   selector: 'ind-header',
@@ -20,6 +21,7 @@ import { Search } from '../search/search';
           <ind-user />
         </div>
         <div class="system-icons"><ind-toggle /></div>
+        <p>Cursos {{ courseCount() }}</p>
       </div>
       <div class="bottom-row">
         <p class="first-line">{{ subtitle() }}</p>
@@ -105,9 +107,11 @@ import { Search } from '../search/search';
   `,
 })
 export class Header {
+  readonly #store = inject(Store)
   readonly title = input.required<string>({
     // eslint-disable-next-line @angular-eslint/no-input-rename
     alias: 'app-title',
   });
   public readonly subtitle = input.required<string>();
+  protected readonly courseCount = computed(() => this.#store.state.courses().length);
 }

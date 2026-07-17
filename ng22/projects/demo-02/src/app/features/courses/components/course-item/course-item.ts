@@ -1,5 +1,6 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Course } from '../../types/course';
+import { Store } from '../../services/store';
 
 @Component({
   selector: 'ind-course-item',
@@ -87,12 +88,11 @@ import { Course } from '../../types/course';
   `,
 })
 export class CourseItem {
+   readonly #store = inject(Store);
   readonly course = input.required<Course>();
-  readonly eventDelete = output<Course['id']>();
-  readonly eventChange = output<Course>();
 
   protected emitDelete() {
-    this.eventDelete.emit(this.course().id);
+    this.#store.deleteCourse(this.course().id);
   }
 
   emitChange() {
@@ -100,6 +100,6 @@ export class CourseItem {
       ...this.course(),
       isOfficial: !this.course().isOfficial,
     };
-    this.eventChange.emit(updatedCourse);
+    this.#store.updateCourse(updatedCourse);
   }
 }

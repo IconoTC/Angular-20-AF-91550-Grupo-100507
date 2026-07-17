@@ -1,13 +1,10 @@
-import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, viewChild } from '@angular/core';
 import { Filter } from '../filter/filter';
 import { CourseItem } from '../course-item/course-item';
 import { CourseForm } from '../course-form/course-form';
-import { Course } from '../../types/course';
 import { JsonPipe } from '@angular/common';
 import { Card } from '../../../../core/components/card/card';
-import { CoursesApiRepo } from '../../services/courses.api.repo';
-import { RepoRx } from '../../../../core/types/repo';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Store } from '../../services/store';
 
 @Component({
   selector: 'ind-courses-list',
@@ -16,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
     <ind-filter />
     <details #addCourseDetail>
       <summary>Añadir curso</summary>
-      <ind-course-form (eventCreate)="createCourse($event)" />
+      <ind-course-form (eventCreate)="closeDetail()" />
     </details>
     @if (isLoading()) {
       <p>Loading courses...</p>
@@ -29,26 +26,10 @@ import { HttpErrorResponse } from '@angular/common/http';
             <ind-card>
               <ind-course-item
                 [course]="item"
-                (eventDelete)="deleteCourse($event)"
-                (eventChange)="updateCourse($event)"
               />
             </ind-card>
           </li>
         }
-
-        <!-- @let coursesList = courses$ | async;
-
-          @for (item of coursesList; track item.id) {
-          <li>
-            <ind-card>
-              <ind-course-item
-                [course]="item"
-                (eventDelete)="deleteCourse($event)"
-                (eventChange)="updateCourse($event)"
-              />
-            </ind-card>
-          </li>
-          }  -->
       </ul>
     }
 
@@ -73,89 +54,18 @@ import { HttpErrorResponse } from '@angular/common/http';
   `,
 })
 export class CoursesList {
-  readonly #repo: RepoRx<Course> = inject(CoursesApiRepo);
   private readonly addCourseDetail = viewChild<ElementRef<HTMLDetailsElement>>('addCourseDetail');
-  protected readonly courses = signal<Course[]>([]);
-  protected readonly error = signal<string | null>(null);
-  protected readonly isLoading = signal<boolean>(false);
+  
+  readonly #store = inject(Store);
+  protected readonly courses = this.#store.state.courses;
+  protected readonly error = this.#store.state.error;
+  protected readonly isLoading = this.#store.state.isLoading;
 
-  constructor() {
-    this.loadCoursesRx();
-  }
-
-  #manageError(error: Error) {
-    console.log(error);
-    if (!(error instanceof HttpErrorResponse)) {
-      error = new Error('Unknown error occurred.');
-    }
-    this.error.set(error.message);
-  }
-
-  loadCoursesRx() {
-    this.isLoading.set(true);
-
-    this.#repo.getAll().subscribe({
-      next: (courses) => {
-        this.courses.set(courses);
-        this.error.set(null);
-        this.isLoading.set(false);
-      },
-      error: this.#manageError,
-      complete: () => {
-        console.log('Courses loading completed.');
-      },
-    });
-  }
-
-  deleteCourse(courseId: Course['id']) {
-    this.#repo.delete(courseId).subscribe({
-      next: () => {
-        const updatedCourses = this.courses().filter((course) => course.id !== courseId);
-        this.courses.set(updatedCourses);
-      },
-      error: this.#manageError,
-    });
-  }
-
-  updateCourse(updatedCourse: Course) {
-    this.#repo.update(updatedCourse.id, updatedCourse).subscribe({
-      next: (updatedCourse) => {
-        const updatedCourses = this.courses().map((course) =>
-          course.id === updatedCourse.id ? updatedCourse : course,
-        );
-        this.courses.set(updatedCourses);
-      },
-      error: this.#manageError,
-      complete: () => {
-        console.log('Course update completed.');
-        this.error.set(null);
-      },
-    });
-  }
-
-  #closeDetail() {
+  protected closeDetail() {
     const detail = this.addCourseDetail()?.nativeElement;
     if (detail) {
       detail.open = false;
     }
   }
 
-  createCourse(courseData: Omit<Course, 'id'>) {
-    // Asíncrona -> repo
-    this.#repo.create(courseData).subscribe(
-      //  Sincrona -> estado
-      {
-        next: (newCourse) => {
-          const updatedCourses = [newCourse, ...this.courses()];
-          this.courses.set(updatedCourses);
-          this.#closeDetail();
-        },
-        error: this.#manageError,
-        complete: () => {
-          console.log('Course creation completed.');
-          this.error.set(null);
-        },
-      },
-    );
-  }
 }

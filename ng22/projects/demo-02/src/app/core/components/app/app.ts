@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
@@ -7,6 +7,7 @@ import { Menu } from '../menu/menu';
 import { Socials } from '../socials/socials';
 import { MenuOption } from '../../types/menu-option';
 import { getMenuItems } from '../../../app.routes';
+import { Store } from '../../../features/courses/services/store';
 
 @Component({
   selector: 'ind-root',
@@ -53,7 +54,13 @@ import { getMenuItems } from '../../../app.routes';
   `,
 })
 export class App {
+  readonly #store = inject(Store)
   protected readonly title = signal('Curso de Angular 22 [2]')
   protected readonly subtitle = signal('Aprende a desarrollar aplicaciones con Angular 22');
   protected readonly menuOptions = signal<MenuOption[]>(getMenuItems());
+ 
+  constructor() {
+    this.#store.loadCourses();
+  }
+  
 }

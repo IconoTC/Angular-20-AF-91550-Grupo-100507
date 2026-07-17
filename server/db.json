@@ -49,7 +49,7 @@
       "duration": "20 horas",
       "level": "beginner",
       "image": "/assets/course_svelte.webp",
-      "isOfficial": false,
+      "isOfficial": true,
       "courseStats": {
         "utility": 4,
         "difficulty": 2,
