@@ -286,12 +286,15 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 - Pipes
   - DatePipe. Location "es". 
   - Usar por defecto: inyección de dependencias
+  - Pipes propios. Ejemplo: Pipe de `truncate`
+
+- Directivas. Estructurales y de atributo 
 
 <!-- Solo comentado 
-- Directivas. Directivas propias
+- Directivas propias
   - Directivas de atributo: Stick
   - Directivas estructurales: introducción
-    - Directivas estructurales: ejemplo
+    - Directivas estructurales: Role (ngIf)
 -->
 
 - Feature Auth
@@ -317,7 +320,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 - 🧿Componente LoginFormMdfRx: Formularios reactivos (DD). LoginForm
   - FormGroup, FormControl, FormBuilder
-  - Binding desde el template  [formGroup] y (ngSubmit)
+  - Binding desde el template [formGroup] y (ngSubmit)
   - Validaciones síncronas (y asíncronas).
     - Mensajes de validación 
 
