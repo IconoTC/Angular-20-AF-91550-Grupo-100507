@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { COURSES } from '../../data/courses';
-import { Course } from '../../types/course';
+import { COURSES } from '../../../data/courses';
+import { Course } from '../../../types/course';
 
 @Component({
   selector: 'ind-course-item-signals',
@@ -41,7 +41,7 @@ export class CourseItemSignals {
     setTimeout(() => {
       this.course.update((course) => ({
         ...course,
-        description: 'Curso de Angular 22 - Actualizado con update()'
+        description: 'Curso de Angular 22 - Actualizado con update()',
       }));
       console.log(this.course().description);
     }, 6000);

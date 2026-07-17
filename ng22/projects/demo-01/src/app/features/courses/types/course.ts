@@ -6,6 +6,7 @@ export interface Course {
   level: "beginner" | "intermediate" | "advanced";
   image: string;
   courseStats: CourseStats;
+  isOfficial: boolean;
 }
 
 export interface CourseStats {
