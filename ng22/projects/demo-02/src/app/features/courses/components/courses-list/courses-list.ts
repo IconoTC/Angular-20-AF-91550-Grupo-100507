@@ -1,11 +1,13 @@
-import { Component, ElementRef, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { Filter } from '../filter/filter';
 import { CourseItem } from '../course-item/course-item';
 import { CourseForm } from '../course-form/course-form';
 import { Course } from '../../types/course';
-import { getMockCoursesAsync, getMockCoursesRx } from '../../data/courses';
 import { JsonPipe } from '@angular/common';
 import { Card } from '../../../../core/components/card/card';
+import { CoursesApiRepo } from '../../services/courses.api.repo';
+import { RepoRx } from '../../../../core/types/repo';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'ind-courses-list',
@@ -14,12 +16,12 @@ import { Card } from '../../../../core/components/card/card';
     <ind-filter />
     <details #addCourseDetail>
       <summary>Añadir curso</summary>
-      <ind-course-form (eventCreate)="createCourse($event)"/>
+      <ind-course-form (eventCreate)="createCourse($event)" />
     </details>
     @if (isLoading()) {
       <p>Loading courses...</p>
     } @else if (error()) {
-      <p>Error loading courses: {{ error() }}</p>
+      <p>{{ error() }}</p>
     } @else {
       <ul>
         @for (item of courses(); track item.id) {
@@ -33,6 +35,20 @@ import { Card } from '../../../../core/components/card/card';
             </ind-card>
           </li>
         }
+
+        <!-- @let coursesList = courses$ | async;
+
+          @for (item of coursesList; track item.id) {
+          <li>
+            <ind-card>
+              <ind-course-item
+                [course]="item"
+                (eventDelete)="deleteCourse($event)"
+                (eventChange)="updateCourse($event)"
+              />
+            </ind-card>
+          </li>
+          }  -->
       </ul>
     }
 
@@ -57,53 +73,34 @@ import { Card } from '../../../../core/components/card/card';
   `,
 })
 export class CoursesList {
+  readonly #repo: RepoRx<Course> = inject(CoursesApiRepo);
+  private readonly addCourseDetail = viewChild<ElementRef<HTMLDetailsElement>>('addCourseDetail');
   protected readonly courses = signal<Course[]>([]);
   protected readonly error = signal<string | null>(null);
   protected readonly isLoading = signal<boolean>(false);
-  private readonly addCourseDetail = viewChild<ElementRef<HTMLDetailsElement>>('addCourseDetail') 
 
   constructor() {
     this.loadCoursesRx();
   }
 
-  // async #loadCourses() {
-  //   const courses = await getMockCoursesAsync();
-  //   this.courses.set(courses);
-  // }
-
-  loadCourses() {
-    this.isLoading.set(true);
-    getMockCoursesAsync()
-      .then((courses) => {
-        this.courses.set(courses);
-        this.error.set(null);
-      })
-      .catch((error: Error) => {
-        this.error.set(error.message);
-        console.error('Error loading courses:', error);
-      })
-      .finally(() => {
-        this.isLoading.set(false);
-        console.log('Courses loading completed.');
-      });
+  #manageError(error: Error) {
+    console.log(error);
+    if (!(error instanceof HttpErrorResponse)) {
+      error = new Error('Unknown error occurred.');
+    }
+    this.error.set(error.message);
   }
 
   loadCoursesRx() {
     this.isLoading.set(true);
-    getMockCoursesRx().subscribe({
+
+    this.#repo.getAll().subscribe({
       next: (courses) => {
         this.courses.set(courses);
         this.error.set(null);
         this.isLoading.set(false);
       },
-      error: (error: Error) => {
-        //if (!(error instanceof Error)) {
-        error = new Error('Unknown error occurred while loading courses.');
-        //}
-        this.error.set(error.message);
-        this.isLoading.set(false);
-        console.error('Error loading courses:', error);
-      },
+      error: this.#manageError,
       complete: () => {
         console.log('Courses loading completed.');
       },
@@ -111,18 +108,32 @@ export class CoursesList {
   }
 
   deleteCourse(courseId: Course['id']) {
-    const updatedCourses = this.courses().filter((course) => course.id !== courseId);
-    this.courses.set(updatedCourses);
+    this.#repo.delete(courseId).subscribe({
+      next: () => {
+        const updatedCourses = this.courses().filter((course) => course.id !== courseId);
+        this.courses.set(updatedCourses);
+      },
+      error: this.#manageError,
+    });
   }
 
   updateCourse(updatedCourse: Course) {
-    const updatedCourses = this.courses().map((course) =>
-      course.id === updatedCourse.id ? updatedCourse : course,
-    );
-    this.courses.set(updatedCourses);
+    this.#repo.update(updatedCourse.id, updatedCourse).subscribe({
+      next: (updatedCourse) => {
+        const updatedCourses = this.courses().map((course) =>
+          course.id === updatedCourse.id ? updatedCourse : course,
+        );
+        this.courses.set(updatedCourses);
+      },
+      error: this.#manageError,
+      complete: () => {
+        console.log('Course update completed.');
+        this.error.set(null);
+      },
+    });
   }
 
-  private closeDetail () {
+  #closeDetail() {
     const detail = this.addCourseDetail()?.nativeElement;
     if (detail) {
       detail.open = false;
@@ -130,12 +141,21 @@ export class CoursesList {
   }
 
   createCourse(courseData: Omit<Course, 'id'>) {
-    const newCourse: Course = {
-      ...courseData,
-      id: this.courses().length > 0 ? Math.max(...this.courses().map((c) => c.id)) + 1 : 1,
-    };
-    const updatedCourses = [newCourse, ...this.courses()];
-    this.courses.set(updatedCourses);
-    this.closeDetail();
+    // Asíncrona -> repo
+    this.#repo.create(courseData).subscribe(
+      //  Sincrona -> estado
+      {
+        next: (newCourse) => {
+          const updatedCourses = [newCourse, ...this.courses()];
+          this.courses.set(updatedCourses);
+          this.#closeDetail();
+        },
+        error: this.#manageError,
+        complete: () => {
+          console.log('Course creation completed.');
+          this.error.set(null);
+        },
+      },
+    );
   }
 }

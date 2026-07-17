@@ -3,11 +3,10 @@ import { User } from '../user/user';
 import { Separator } from '../separator/separator';
 import { Toggle } from '../toggle/toggle';
 import { Search } from '../search/search';
-import { SearchRef } from '../search/search-ref';
 
 @Component({
   selector: 'ind-header',
-  imports: [User, Separator, Toggle, Search, SearchRef],
+  imports: [User, Separator, Toggle, Search],
   template: `
     <header class="container">
       <div class="left-side">
