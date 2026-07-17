@@ -13,11 +13,6 @@ import { CoursesList } from './components/courses-list/courses-list';
       <!-- <ind-course-item-pro /> -->
       <ind-courses-list />
     </ind-card>
-    <!-- <details>
-      <summary>Componentes de ejemplo previos</summary>
-      <ind-course-item />
-      <ind-course-item-signals />
-    </details> -->
     <p>TimeStamp: {{ ts.getTime() }}</p>
   `,
   styles: ``,

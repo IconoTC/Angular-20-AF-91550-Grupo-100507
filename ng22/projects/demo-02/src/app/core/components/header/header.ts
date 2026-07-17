@@ -28,16 +28,7 @@ import { SearchRef } from '../search/search-ref';
           <div>
             <ng-content select="[slot=menu]" />
           </div>
-          <div>
-            <details name="search" open>
-              <summary></summary>
-              <ind-search />
-            </details>
-            <details name = "search">
-              <summary></summary>
-              <ind-search-ref />
-            </details>
-          </div>
+          <ind-search />
         </div>
       </div>
     </header>
